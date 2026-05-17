@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAMA - Protección Industrial | Pisos Industriales y Deportivos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        fama: {
+                            dark: '#0A3B45',      // Teal ultra oscuro para contrastes
+                            primary: '#0E5E6F',   // Color exacto del texto "ama" del logo
+                            secondary: '#8FA996', // Color verde/gris suave del isotipo
+                            light: '#9AB3B8',     // Variación clara para fondos e íconos
+                            accent: '#F39C12',    // Naranja deportivo / industrial de advertencia para llamadas a la acción
+                            bgDark: '#0B1E21',    // Fondo oscuro premium
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-brand {
+            background: linear-gradient(135deg, #0E5E6F 0%, #0A3B45 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #0E5E6F 0%, #8FA996 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .diamond-pattern {
+            transform: rotate(45deg);
+        }
+        .diamond-pattern-reverse {
+            transform: rotate(-45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+
+    <!-- HEADER & NAV -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-md transition-all duration-300 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- LOGO FAMA -->
+                <a href="#inicio" class="flex items-center space-x-3 group">
+                    <div class="flex items-center">
+                        <!-- Isotipo FAMA Vectorial -->
+                        <svg class="h-12 w-auto" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- El isotipo 'f' -->
+                            <path d="M40 90C40 70 55 55 75 55H100V75H75C67 75 60 82 60 90C60 98 67 105 75 105H100V125H75C55 125 40 110 40 90Z" fill="#8FA996" />
+                            <path d="M40 50C40 30 55 15 75 15H100V35H75C67 35 60 42 60 50C60 58 67 65 75 65H100V85H75C55 85 40 70 40 50Z" fill="#8FA996" opacity="0.8" />
+                            <circle cx="50" cy="115" r="10" fill="#8FA996" />
+                            
+                            <!-- Texto 'ama' -->
+                            <text x="110" y="102" font-family="Montserrat" font-size="88" font-weight="800" fill="#0E5E6F" letter-spacing="-3">ama</text>
+                            
+                            <!-- Subtexto 'proteccion industrial' -->
+                            <text x="95" y="132" font-family="Montserrat" font-size="21" font-weight="600" fill="#0E5E6F" letter-spacing="3">proteccion industrial</text>
+                        </svg>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors">Inicio</a>
+                    <a href="#nosotros" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors">Nosotros</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors">Servicios</a>
+                    <a href="#visualizador" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors flex items-center gap-1">
+                        <span>Visualizador</span>
+                        <span class="bg-fama-accent text-white text-[10px] px-1.5 py-0.5 rounded-full uppercase animate-pulse">Nuevo</span>
+                    </a>
+                    <a href="#configurador" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors">Configurador</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-fama-primary font-semibold transition-colors">Contacto</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden lg:flex items-center">
+                    <a href="#configurador" class="bg-fama-primary hover:bg-fama-dark text-white px-5 py-2.5 rounded-lg font-bold transition-all duration-300 shadow-md hover:shadow-lg flex items-center gap-2">
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span>Solicitar Cotización</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="text-fama-primary hover:text-fama-dark focus:outline-none p-2" aria-label="Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 px-4 pt-2 pb-6 space-y-3 transition-all duration-300 shadow-lg">
+            <a href="#inicio" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 border-b border-gray-50">Inicio</a>
+            <a href="#nosotros" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 border-b border-gray-50">Nosotros</a>
+            <a href="#servicios" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 border-b border-gray-50">Servicios</a>
+            <a href="#visualizador" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 border-b border-gray-50 flex items-center justify-between">
+                <span>Visualizador Interactivo</span>
+                <span class="bg-fama-accent text-white text-[10px] px-2 py-0.5 rounded-full">INTERACTIVO</span>
+            </a>
+            <a href="#configurador" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 border-b border-gray-50">Configurador de Piso</a>
+            <a href="#contacto" class="block text-gray-700 hover:text-fama-primary font-semibold py-2 pb-4">Contacto</a>
+            <a href="#configurador" class="w-full text-center bg-fama-primary text-white block py-3 rounded-lg font-bold shadow">
+                <i class="fa-solid fa-file-invoice-dollar mr-2"></i>Solicitar Cotización
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative overflow-hidden bg-fama-bgDark text-white pt-12 pb-24 lg:pt-20 lg:pb-32">
+        <!-- Background Elements / Gradients -->
+        <div class="absolute inset-0 opacity-15">
+            <div class="absolute top-1/4 left-1/10 w-96 h-96 bg-fama-primary rounded-full filter blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/10 w-96 h-96 bg-fama-secondary rounded-full filter blur-3xl"></div>
+            <!-- Grid Pattern overlay -->
+            <div class="absolute inset-0" style="background-image: radial-gradient(#9AB3B8 1px, transparent 1px); background-size: 30px 30px;"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-fama-primary/25 border border-fama-primary/40 px-4 py-1.5 rounded-full text-fama-secondary font-semibold text-sm">
+                        <i class="fa-solid fa-shield-halved text-fama-secondary"></i>
+                        <span>Protección de Superficies de Alto Rendimiento</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold tracking-tight leading-tight">
+                        Pisos <span class="text-fama-secondary">Industriales</span> y Revestimientos <span class="text-fama-light">Deportivos</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-300 max-w-2xl mx-auto lg:mx-0">
+                        En <strong class="text-white">FAMA</strong> diseñamos, preparamos y aplicamos sistemas de recubrimiento epóxico, poliuretano y poliaspárticos con máxima resistencia química, mecánica y estética.
+                    </p>
+
+                    <!-- Feature Tags -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 text-left max-w-lg mx-auto lg:mx-0">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-fama-secondary text-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Alta Durabilidad</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-fama-secondary text-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Antideslizante</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-fama-secondary text-lg"></i>
+                            <span class="text-sm font-medium text-gray-200">Normativa ASTM</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                        <a href="#visualizador" class="bg-fama-primary hover:bg-fama-primary/90 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 text-center">
+                            Probar Visualizador
+                        </a>
+                        <a href="#servicios" class="border-2 border-fama-secondary text-fama-secondary hover:bg-fama-secondary hover:text-fama-bgDark font-bold px-8 py-4 rounded-xl transition-all text-center">
+                            Nuestras Soluciones
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Brand Graphic -->
+                <div class="lg:col-span-5 flex justify-center items-center relative">
+                    <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+                        <!-- Background Glow -->
+                        <div class="absolute w-full h-full bg-fama-primary/20 rounded-full filter blur-2xl"></div>
+                        
+                        <!-- Three Diamonds -->
+                        <div class="absolute top-0 right-4 w-28 h-28 bg-fama-primary border-4 border-white/10 rounded-2xl shadow-xl transform rotate-45 flex items-center justify-center transition-all duration-500 hover:scale-110">
+                            <div class="transform -rotate-45 text-white flex flex-col items-center">
+                                <i class="fa-solid fa-industry text-3xl mb-1 text-fama-secondary"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Industrial</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-12 right-0 w-28 h-28 bg-fama-dark border-4 border-white/10 rounded-2xl shadow-xl transform rotate-45 flex items-center justify-center transition-all duration-500 hover:scale-110">
+                            <div class="transform -rotate-45 text-white flex flex-col items-center">
+                                <i class="fa-solid fa-dumbbell text-3xl mb-1 text-fama-light"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Deportivo</span>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-0 left-4 w-28 h-28 bg-fama-secondary border-4 border-white/10 rounded-2xl shadow-xl transform rotate-45 flex items-center justify-center transition-all duration-500 hover:scale-110">
+                            <div class="transform -rotate-45 text-fama-bgDark flex flex-col items-center">
+                                <i class="fa-solid fa-compass-drafting text-3xl mb-1 text-fama-dark"></i>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Ingeniería</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS STRIP -->
+    <section class="bg-fama-primary -mt-10 relative z-20 shadow-xl max-w-6xl mx-auto rounded-2xl overflow-hidden grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-fama-dark/30 text-white">
+        <div class="p-6 text-center">
+            <p class="text-3xl md:text-4xl font-display font-extrabold text-fama-secondary">15+</p>
+            <p class="text-xs uppercase font-semibold tracking-wider text-gray-200 mt-1">Años de Experiencia</p>
+        </div>
+        <div class="p-6 text-center">
+            <p class="text-3xl md:text-4xl font-display font-extrabold text-fama-secondary">100k+</p>
+            <p class="text-xs uppercase font-semibold tracking-wider text-gray-200 mt-1">m² Instalados</p>
+        </div>
+        <div class="p-6 text-center">
+            <p class="text-3xl md:text-4xl font-display font-extrabold text-fama-secondary">100%</p>
+            <p class="text-xs uppercase font-semibold tracking-wider text-gray-200 mt-1">Garantía de Adherencia</p>
+        </div>
+        <div class="p-6 text-center">
+            <p class="text-3xl md:text-4xl font-display font-extrabold text-fama-secondary">24/7</p>
+            <p class="text-xs uppercase font-semibold tracking-wider text-gray-200 mt-1">Soporte Técnico</p>
+        </div>
+    </section>
+
+    <!-- ACERCA DE (NOSOTROS) -->
+    <section id="nosotros" class="py-20 lg:py-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-fama-primary rounded-3xl p-4 shadow-2xl overflow-hidden aspect-video sm:aspect-square flex items-center justify-center text-white">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-60 mix-blend-multiply" style="background-image: url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="relative z-10 text-center p-6 bg-fama-dark/80 rounded-2xl border border-white/10 backdrop-blur-sm">
+                            <i class="fa-solid fa-helmet-safety text-5xl text-fama-secondary mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">Seguridad & Calidad</h3>
+                            <p class="text-sm text-gray-200">Todos nuestros revestimientos cumplen con los estándares internacionales de fricción, dureza shore y resistencia al impacto.</p>
+                        </div>
+                    </div>
+                    <!-- Decorative floating element -->
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden sm:flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-fama-secondary/20 flex items-center justify-center text-fama-primary text-xl font-bold">
+                            F
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold">Certificación</p>
+                            <p class="text-sm font-extrabold text-fama-primary">ISO 9001:2015</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-fama-primary font-bold tracking-widest uppercase block text-sm">¿Quiénes Somos?</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-fama-dark">Líderes en Protección de Superficies de Alta Resistencia</h2>
+                    <p class="text-gray-600">
+                        En **FAMA Protección Industrial** nos apasiona transformar y proteger superficies de concreto. Nos especializamos en brindar soluciones duraderas y de alto rendimiento que resisten las demandas más severas de la industria y la recreación deportiva.
+                    </p>
+                    <p class="text-gray-600">
+                        Utilizamos polímeros avanzados formulados con resinas epóxicas, poliuretanos, metacrilatos (MMA) y poliaspárticos que aseguran excelente adherencia, facilidad de limpieza y resistencia tanto al tráfico pesado como a químicos agresivos.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-start gap-3">
+                            <span class="text-fama-primary mt-1 text-lg"><i class="fa-solid fa-flask"></i></span>
+                            <div>
+                                <h4 class="font-bold text-fama-dark">Ingeniería Química</h4>
+                                <p class="text-xs text-gray-500">Diseño de sistemas poliméricos a la medida de su requerimiento.</p>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-start gap-3">
+                            <span class="text-fama-primary mt-1 text-lg"><i class="fa-solid fa-truck-monster"></i></span>
+                            <div>
+                                <h4 class="font-bold text-fama-dark">Tráfico Pesado</h4>
+                                <p class="text-xs text-gray-500">Sistemas ideales para montacargas, camiones y arrastre.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIONES / SERVICIOS -->
+    <section id="servicios" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-fama-primary font-bold tracking-widest uppercase text-sm block">Nuestros Servicios</span>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold text-fama-dark">Sistemas de Revestimiento de Alto Rendimiento</h2>
+                <p class="text-gray-600">Ofrecemos tecnologías avanzadas diseñadas específicamente para cada tipo de tránsito, impacto y ambiente.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Servicio 1: Pisos Epóxicos Industriales -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group border border-gray-200/50">
+                    <div class="h-48 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-fama-primary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Industrial</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-fama-dark group-hover:text-fama-primary transition-colors">Pisos Epóxicos de Alta Resistencia</h3>
+                            <p class="text-sm text-gray-600">Sistemas autonivelantes, multicapas y morteros epóxicos ideales para plantas de alimentos, laboratorios y almacenes logísticos.</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-layer-group mr-1"></i> Espesor: 2mm - 5mm</span>
+                            <button onclick="toggleModal('epoxico')" class="text-fama-primary font-bold text-xs hover:underline flex items-center gap-1">
+                                Ver Ficha <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 2: Revestimientos Deportivos -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group border border-gray-200/50">
+                    <div class="h-48 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1544698310-74ea9d1c8258?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-fama-secondary text-fama-dark text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider font-extrabold">Deportivo</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-fama-dark group-hover:text-fama-primary transition-colors">Revestimientos Deportivos</h3>
+                            <p class="text-sm text-gray-600">Sistemas de poliuretano elástico y acrílicos certificados. Amortiguación de impactos óptima para canchas polideportivas, tenis, atletismo y gimnasios.</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-person-running mr-1"></i> Tracción y Absorción</span>
+                            <button onclick="toggleModal('deportivo')" class="text-fama-primary font-bold text-xs hover:underline flex items-center gap-1">
+                                Ver Ficha <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Servicio 3: Poliuretano Industrial & Uretanos Cementicios -->
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col group border border-gray-200/50">
+                    <div class="h-48 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-dark via-transparent to-transparent"></div>
+                        <span class="absolute top-4 left-4 bg-fama-primary text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">Industrial</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-fama-dark group-hover:text-fama-primary transition-colors">Poliuretano y Uretano Cementicio</h3>
+                            <p class="text-sm text-gray-600">Máxima protección contra choques térmicos extremos (-40°C a 120°C). Diseñado para salas de refrigeración, mataderos e industrias químicas pesadas.</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+                            <span class="text-xs text-gray-400"><i class="fa-solid fa-temperature-arrow-down mr-1"></i> Resistencia Térmica</span>
+                            <button onclick="toggleModal('poliuretano')" class="text-fama-primary font-bold text-xs hover:underline flex items-center gap-1">
+                                Ver Ficha <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- VISUALIZADOR INTERACTIVO DE PISOS -->
+    <section id="visualizador" class="py-20 bg-fama-bgDark text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-fama-secondary rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-4">
+                <span class="text-fama-secondary font-bold tracking-widest uppercase text-xs px-3 py-1 bg-white/10 rounded-full inline-block">Herramienta Interactiva</span>
+                <h2 class="text-3xl sm:text-5xl font-display font-extrabold">Visualizador de Pisos FAMA</h2>
+                <p class="text-gray-300">Selecciona el tipo de entorno y el color de revestimiento para ver un modelo interactivo en tiempo real.</p>
+            </div>
+
+            <!-- Interactive visualizer application -->
+            <div class="bg-fama-dark/50 border border-white/10 p-4 sm:p-8 rounded-3xl backdrop-blur-md shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Left: Control Panel -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div>
+                            <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-fama-secondary animate-ping"></span>
+                                Paso 1: Seleccione Entorno
+                            </h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button onclick="setEnvironment('industrial')" id="btn-env-industrial" class="p-3 rounded-xl border-2 border-fama-secondary bg-fama-primary text-white font-bold text-sm transition-all flex flex-col items-center justify-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-industry text-xl"></i>
+                                    <span>Piso Industrial</span>
+                                </button>
+                                <button onclick="setEnvironment('deportivo')" id="btn-env-deportivo" class="p-3 rounded-xl border-2 border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 font-bold text-sm transition-all flex flex-col items-center justify-center gap-2">
+                                    <i class="fa-solid fa-basketball text-xl"></i>
+                                    <span>Piso Deportivo</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-fama-secondary animate-ping"></span>
+                                Paso 2: Seleccione Color del Revestimiento
+                            </h3>
+                            <div class="grid grid-cols-5 gap-2" id="color-selectors">
+                                <button onclick="setFloorColor('#0E5E6F', 'Turquesa Corporativo')" class="w-10 h-10 rounded-full bg-[#0E5E6F] border-2 border-white shadow-md hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fama-secondary" title="Turquesa Corporativo"></button>
+                                <button onclick="setFloorColor('#9E2A2B', 'Rojo Industrial')" class="w-10 h-10 rounded-full bg-[#9E2A2B] border-2 border-transparent hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fama-secondary" title="Rojo Óxido / Industrial"></button>
+                                <button onclick="setFloorColor('#1E3D59', 'Azul Deportivo')" class="w-10 h-10 rounded-full bg-[#1E3D59] border-2 border-transparent hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fama-secondary" title="Azul Olímpico"></button>
+                                <button onclick="setFloorColor('#1B4931', 'Verde Campo')" class="w-10 h-10 rounded-full bg-[#1B4931] border-2 border-transparent hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fama-secondary" title="Verde Cancha"></button>
+                                <button onclick="setFloorColor('#5A5A5A', 'Gris Tránsito')" class="w-10 h-10 rounded-full bg-[#5A5A5A] border-2 border-transparent hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-fama-secondary" title="Gris Tránsito"></button>
+                            </div>
+                            <p class="text-xs text-gray-400 mt-2">Color seleccionado: <strong id="selected-color-name" class="text-fama-secondary">Turquesa Corporativo</strong></p>
+                        </div>
+
+                        <!-- Technical Specs dynamic block based on environment -->
+                        <div class="bg-white/5 border border-white/10 rounded-xl p-4 space-y-3" id="env-specs">
+                            <h4 class="font-bold text-sm text-fama-secondary uppercase tracking-wider flex items-center gap-1">
+                                <i class="fa-solid fa-gears"></i> Especificación Estimada
+                            </h4>
+                            <ul class="text-xs space-y-2 text-gray-300">
+                                <li class="flex justify-between"><span>Sistema:</span> <strong class="text-white" id="spec-system">Autonivelante Epóxico</strong></li>
+                                <li class="flex justify-between"><span>Espesor ideal:</span> <strong class="text-white" id="spec-thickness">3.0 mm</strong></li>
+                                <li class="flex justify-between"><span>Resistencia al Tránsito:</span> <strong class="text-white" id="spec-traffic">Pesado (Montacargas)</strong></li>
+                                <li class="flex justify-between"><span>Terminado:</span> <strong class="text-white" id="spec-finish">Brillante Autolimpiante</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visualizer Graphic Rendering Frame -->
+                    <div class="lg:col-span-8 flex flex-col justify-center">
+                        <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-white/10 shadow-inner bg-gradient-to-b from-[#111] to-[#222]">
+                            <!-- ENVIRONMENT: INDUSTRIAL (DEFAULT) -->
+                            <div id="vis-industrial" class="absolute inset-0 flex flex-col justify-between p-6 transition-opacity duration-500">
+                                <svg class="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0 H800 V280 L400 150 L0 280 Z" fill="#2A2A2A" />
+                                    <path d="M400 150 L0 100" stroke="#3A3A3A" stroke-width="4" />
+                                    <path d="M400 150 L800 100" stroke="#3A3A3A" stroke-width="4" />
+                                    <path d="M400 150 V280" stroke="#3A3A3A" stroke-width="4" />
+                                    <rect x="120" y="160" width="80" height="120" fill="#1C1C1C" rx="4" />
+                                    <rect x="600" y="160" width="80" height="120" fill="#1C1C1C" rx="4" />
+                                    
+                                    <rect x="0" y="150" width="40" height="130" fill="#444" />
+                                    <rect x="760" y="150" width="40" height="130" fill="#444" />
+                                    
+                                    <path id="industrial-floor-path" d="M0 280 L400 240 L800 280 V600 H0 Z" fill="#0E5E6F" class="transition-all duration-500" />
+                                    
+                                    <path d="M400 240 L0 600" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+                                    <path d="M400 240 L200 600" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+                                    <path d="M400 240 L400 600" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+                                    <path d="M400 240 L600 600" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" />
+                                    <path d="M400 240 L800 600" stroke="rgba(255,255,255,0.15)" stroke-width="2" />
+                                    
+                                    <path d="M0 280 L800 280 L400 450 Z" fill="url(#gloss-grad)" opacity="0.45" />
+                                    
+                                    <g transform="translate(480, 230) scale(1.1)">
+                                        <rect x="10" y="40" width="90" height="50" fill="#E67E22" rx="10" />
+                                        <rect x="40" y="10" width="50" height="40" fill="none" stroke="#E67E22" stroke-width="5" rx="4" />
+                                        <circle cx="35" cy="90" r="15" fill="#111" />
+                                        <circle cx="85" cy="90" r="15" fill="#111" />
+                                        <path d="M100 70 H130 V85" stroke="#444" stroke-width="6" stroke-linecap="round" />
+                                        <rect x="110" y="45" width="30" height="25" fill="#8B5A2B" rx="2" />
+                                    </g>
+                                    
+                                    <text x="30" y="320" font-family="Montserrat" font-size="14" font-weight="bold" fill="rgba(255,255,255,0.8)">ZONA DE TRÁNSITO PESADO - ALMACÉN</text>
+
+                                    <defs>
+                                        <linearGradient id="gloss-grad" x1="400" y1="280" x2="400" y2="450" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="white" stop-opacity="0.4" />
+                                            <stop offset="100%" stop-color="white" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+
+                            <!-- ENVIRONMENT: DEPORTIVO (HIDDEN BY DEFAULT) -->
+                            <div id="vis-deportivo" class="absolute inset-0 flex flex-col justify-between p-6 transition-opacity duration-500 opacity-0 pointer-events-none">
+                                <svg class="w-full h-full" viewBox="0 0 800 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M0 0 H800 V240 H0 Z" fill="#1A252C" />
+                                    <path d="M0 50 H800" stroke="#2C3E50" stroke-width="4" />
+                                    <path d="M0 100 H800" stroke="#2C3E50" stroke-width="4" />
+                                    <path d="M0 150 H800" stroke="#2C3E50" stroke-width="4" />
+                                    <path d="M0 200 H800" stroke="#2C3E50" stroke-width="4" />
+                                    <path d="M400 50 V180 H360" stroke="#BDC3C7" stroke-width="6" />
+                                    <rect x="330" y="150" width="60" height="40" fill="white" stroke="#333" stroke-width="3" />
+                                    <circle cx="360" cy="180" r="10" fill="none" stroke="#E74C3C" stroke-width="3" />
+                                    
+                                    <path id="deportivo-floor-path" d="M0 240 L400 200 L800 240 V600 H0 Z" fill="#1E3D59" class="transition-all duration-500" />
+                                    
+                                    <path d="M200 600 C 200 400, 600 400, 600 600" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none" />
+                                    <path d="M300 600 V480 H500 V600" stroke="rgba(255,255,255,0.7)" stroke-width="3" fill="none" />
+                                    <path d="M0 350 L800 350" stroke="rgba(255,255,255,0.6)" stroke-width="2" />
+                                    <path d="M400 200 L400 600" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" />
+                                    
+                                    <path d="M0 240 L800 240 L400 400 Z" fill="url(#sports-gloss)" opacity="0.3" />
+
+                                    <text x="30" y="270" font-family="Montserrat" font-size="14" font-weight="bold" fill="rgba(255,255,255,0.8)">SISTEMA POLIURETANO DEPORTIVO MULTICANCHA</text>
+
+                                    <defs>
+                                        <linearGradient id="sports-gloss" x1="400" y1="240" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+                                            <stop offset="0%" stop-color="white" stop-opacity="0.3" />
+                                            <stop offset="100%" stop-color="white" stop-opacity="0" />
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONFIGURADOR TÉCNICO DE PISOS (REEMPLAZA EL ESQUEMA DE PRECIOS) -->
+    <section id="configurador" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Details Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-fama-primary font-bold tracking-widest uppercase text-sm block">Ingeniería a la Medida</span>
+                    <h2 class="text-3xl sm:text-4xl font-display font-bold text-fama-dark">Diseña la Especificación de tu Piso</h2>
+                    <p class="text-gray-600">
+                        Cada espacio requiere un análisis particular de acuerdo con el tipo de uso. Cuéntanos sobre el área y el estado del soporte del concreto actual de tu obra y nuestro configurador técnico te sugerirá el sistema con los parámetros ideales.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-fama-primary/10 flex items-center justify-center text-fama-primary">
+                                <i class="fa-solid fa-list-check"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Especificación técnica automatizada bajo normativas de fricción e impacto.</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-fama-primary/10 flex items-center justify-center text-fama-primary">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Análisis del tipo de preparación de superficie necesaria (Desbaste diamantado).</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-fama-primary/10 flex items-center justify-center text-fama-primary">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </div>
+                            <span class="text-sm font-semibold text-gray-700">Cotización técnica formal personalizada mediante inspección de soporte física sin costo.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Technical Configurator Widget -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-gray-100 space-y-6">
+                    <h3 class="text-2xl font-bold text-fama-dark border-b border-gray-100 pb-4">Asesor de Especificación Técnica</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Area Input -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700" for="calc-area">Área Aproximada ($m^2$)</label>
+                            <div class="relative">
+                                <input type="number" id="calc-area" min="20" max="10000" value="150" oninput="updateTechnicalSpecification()" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all font-semibold">
+                                <span class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-bold">m²</span>
+                            </div>
+                        </div>
+
+                        <!-- System Selector -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700" for="calc-system">Tipo de Revestimiento Requerido</label>
+                            <select id="calc-system" onchange="updateTechnicalSpecification()" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all font-semibold">
+                                <option value="epoxico-estandar">Pintura Epóxica Antidust (Uso Ligero)</option>
+                                <option value="epoxico-autonivelante" selected>Autonivelante Epóxico Industrial (Súper Resistente)</option>
+                                <option value="deportivo-poliuretano">Poliuretano Deportivo (Multicancha Premium)</option>
+                                <option value="deportivo-acrilico">Acrílico Deportivo (Exterior / Canchas de Tenis)</option>
+                                <option value="uretano-cementicio">Uretano Cementicio (Tránsito Ultra Pesado / Choques Térmicos)</option>
+                            </select>
+                        </div>
+
+                        <!-- Concrete State Selector -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700" for="calc-concrete">Estado Actual del Concreto</label>
+                            <select id="calc-concrete" onchange="updateTechnicalSpecification()" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all font-semibold">
+                                <option value="nuevo">Nuevo / Pulido (Sin fisuras notables)</option>
+                                <option value="regular" selected>Con fisuras menores / Desgaste superficial moderado</option>
+                                <option value="danado">Dañado / Con baches, grietas profundas o contaminación grasa</option>
+                            </select>
+                        </div>
+
+                        <!-- Additional Features -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700">Tratamientos Especiales</label>
+                            <div class="space-y-2 pt-2">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="calc-demarcation" onchange="updateTechnicalSpecification()" class="rounded text-fama-primary focus:ring-fama-primary w-5 h-5">
+                                    <span class="text-sm text-gray-600">Demarcación Vial de Seguridad / Cancha</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" id="calc-antislip" onchange="updateTechnicalSpecification()" class="rounded text-fama-primary focus:ring-fama-primary w-5 h-5" checked>
+                                    <span class="text-sm text-gray-600">Aditivo Antideslizante Silíceo (Rocker)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- REPLACED PRICING WITH DYNAMIC TECHNICAL RECOMMENDATION BOX -->
+                    <div class="bg-fama-primary/5 border border-fama-primary/10 p-6 rounded-2xl space-y-4">
+                        <div class="text-center border-b border-fama-primary/10 pb-2">
+                            <span class="text-xs uppercase font-extrabold tracking-wider text-fama-primary">Especificación Sugerida de Ingeniería</span>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                            <div class="space-y-1">
+                                <p class="text-xs text-gray-400 font-bold uppercase">Sistema Recomendado</p>
+                                <p id="summary-system" class="font-extrabold text-fama-dark text-base">Autonivelante Epóxico</p>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-xs text-gray-400 font-bold uppercase">Espesor Óptimo</p>
+                                <p id="summary-thickness" class="font-extrabold text-fama-dark text-base">3.0 mm</p>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-xs text-gray-400 font-bold uppercase">Tratamiento del Soporte</p>
+                                <p id="summary-prep" class="font-extrabold text-fama-dark text-base">Desbaste + Sellado de Fisuras</p>
+                            </div>
+                            <div class="space-y-1">
+                                <p class="text-xs text-gray-400 font-bold uppercase">Adicionales Añadidos</p>
+                                <p id="summary-addons" class="font-extrabold text-fama-primary text-base">Antideslizante</p>
+                            </div>
+                        </div>
+                        <p class="text-[10px] text-gray-500 text-center italic mt-2">Esta recomendación es preliminar y se confirmará mediante inspección de humedad y esclerometría en su obra.</p>
+                    </div>
+
+                    <!-- Call to Action -->
+                    <div class="pt-2 text-center">
+                        <button onclick="openModalAndPreFill()" class="w-full bg-fama-accent hover:bg-fama-accent/90 text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                            Solicitar Presupuesto Formal e Inspección de Obra Gratuita
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS / GALERÍA -->
+    <section class="py-20 bg-fama-bgDark text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-fama-secondary font-bold tracking-widest uppercase text-sm block">Nuestro Portafolio</span>
+                <h2 class="text-3xl sm:text-4xl font-display font-bold">Obras Destacadas</h2>
+                <p class="text-gray-300">Pisos que protegen la operatividad diaria de grandes marcas y el rendimiento de atletas profesionales.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Proyecto 1 -->
+                <div class="bg-fama-dark/30 border border-white/5 rounded-2xl overflow-hidden group hover:border-fama-secondary/30 transition-all duration-300">
+                    <div class="h-56 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-bgDark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs font-bold text-fama-secondary uppercase tracking-widest">Almacén de Distribución</span>
+                        <h3 class="text-lg font-bold">Planta Logística Industrial (2,500 m²)</h3>
+                        <p class="text-xs text-gray-300">Aplicación de sistema epóxico autonivelante de 3mm con demarcación vial de alta reflectancia para tránsito pesado de montacargas.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="bg-fama-dark/30 border border-white/5 rounded-2xl overflow-hidden group hover:border-fama-secondary/30 transition-all duration-300">
+                    <div class="h-56 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-bgDark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs font-bold text-fama-secondary uppercase tracking-widest">Polideportivo</span>
+                        <h3 class="text-lg font-bold">Canchas de Baloncesto y Tenis (1,200 m²)</h3>
+                        <p class="text-xs text-gray-300">Sistema multicapas de poliuretano deportivo de alta amortiguación, optimizando el rebote del balón y reduciendo lesiones de articulaciones.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="bg-fama-dark/30 border border-white/5 rounded-2xl overflow-hidden group hover:border-fama-secondary/30 transition-all duration-300">
+                    <div class="h-56 relative overflow-hidden bg-fama-primary">
+                        <div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-500 opacity-80" style="background-image: url('https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800')"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-fama-bgDark via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <span class="text-xs font-bold text-fama-secondary uppercase tracking-widest">Industria Alimentaria</span>
+                        <h3 class="text-lg font-bold">Cámara Frigorífica Alimentaria (800 m²)</h3>
+                        <p class="text-xs text-gray-300">Mortero de uretano cementicio con aditivo antimicrobial capaz de soportar choques térmicos extremos y desinfección a vapor continuo.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO / UBICACIÓN -->
+    <section id="contacto" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Contact Info -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="space-y-4">
+                        <span class="text-fama-primary font-bold tracking-widest uppercase text-sm block">Contacto Directo</span>
+                        <h2 class="text-3xl sm:text-4xl font-display font-bold text-fama-dark">¿Listo para Proteger tus Pisos?</h2>
+                        <p class="text-gray-600">Completa el formulario y un ingeniero especialista de FAMA te contactará en menos de 2 horas para coordinar tu propuesta técnica y económica personalizada.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-fama-primary/10 flex items-center justify-center text-fama-primary text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-fama-dark">Ubicación de Oficinas</h4>
+                                <p class="text-sm text-gray-600">Av. de la Industria 4200, Zona Industrial Norte.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-fama-primary/10 flex items-center justify-center text-fama-primary text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-fama-dark">Llamadas y WhatsApp</h4>
+                                <p class="text-sm text-gray-600">+51 987 654 321 / +51 01 455-8900</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-fama-primary/10 flex items-center justify-center text-fama-primary text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-fama-dark">Correo Corporativo</h4>
+                                <p class="text-sm text-gray-600">proyectos@fama-proteccion.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form with custom alert message box -->
+                <div class="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl shadow-xl border border-gray-100">
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-700" for="contact-name">Nombre Completo</label>
+                                <input type="text" id="contact-name" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all" placeholder="Ej. Carlos Mendoza">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-700" for="contact-company">Empresa / Institución</label>
+                                <input type="text" id="contact-company" class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all" placeholder="Ej. Almacenes S.A.">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-700" for="contact-email">Correo Electrónico</label>
+                                <input type="email" id="contact-email" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all" placeholder="Ej. contacto@empresa.com">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-700" for="contact-phone">Número de Teléfono</label>
+                                <input type="tel" id="contact-phone" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all" placeholder="Ej. +51 987 654 321">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-700" for="contact-message">Detalles del Proyecto / Configuración de Piso</label>
+                            <textarea id="contact-message" rows="4" required class="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl focus:ring-2 focus:ring-fama-primary focus:border-fama-primary outline-none transition-all" placeholder="Describe los detalles de tu obra, metros cuadrados aproximados y si es para uso industrial o deportivo..."></textarea>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" id="terms" required class="rounded text-fama-primary focus:ring-fama-primary w-5 h-5">
+                            <label for="terms" class="text-xs text-gray-500">Acepto la política de protección de datos para recibir la propuesta técnica.</label>
+                        </div>
+
+                        <button type="submit" class="w-full bg-fama-primary hover:bg-fama-dark text-white font-bold py-4 rounded-xl transition-all shadow-lg flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Enviar Solicitud de Información Técnica</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-fama-bgDark text-gray-400 py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
+                
+                <!-- Left brand and text -->
+                <div class="md:col-span-5 space-y-6">
+                    <svg class="h-12 w-auto" viewBox="0 0 450 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M40 90C40 70 55 55 75 55H100V75H75C67 75 60 82 60 90C60 98 67 105 75 105H100V125H75C55 125 40 110 40 90Z" fill="#8FA996" />
+                        <path d="M40 50C40 30 55 15 75 15H100V35H75C67 35 60 42 60 50C60 58 67 65 75 65H100V85H75C55 85 40 70 40 50Z" fill="#8FA996" opacity="0.8" />
+                        <circle cx="50" cy="115" r="10" fill="#8FA996" />
+                        <text x="110" y="102" font-family="Montserrat" font-size="88" font-weight="800" fill="#ffffff" letter-spacing="-3">ama</text>
+                        <text x="95" y="132" font-family="Montserrat" font-size="21" font-weight="600" fill="#8FA996" letter-spacing="3">proteccion industrial</text>
+                    </svg>
+                    <p class="text-xs text-gray-400">Ingeniería en polímeros de alta adherencia y durabilidad para todo tipo de proyectos. Especialistas autorizados en revestimientos de resina epoxi y poliuretanos.</p>
+                </div>
+
+                <!-- Quick links -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#inicio" class="hover:text-fama-secondary transition-colors">Inicio</a></li>
+                        <li><a href="#nosotros" class="hover:text-fama-secondary transition-colors">Sobre FAMA</a></li>
+                        <li><a href="#servicios" class="hover:text-fama-secondary transition-colors">Sistemas & Revestimientos</a></li>
+                        <li><a href="#visualizador" class="hover:text-fama-secondary transition-colors">Visualizador Virtual</a></li>
+                        <li><a href="#configurador" class="hover:text-fama-secondary transition-colors">Configurador de Proyecto</a></li>
+                    </ul>
+                </div>
+
+                <!-- Industrial certificates -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="text-sm font-bold text-white uppercase tracking-wider">Normas Técnicas de Cumplimiento</h4>
+                    <div class="grid grid-cols-2 gap-2 text-[10px] text-gray-400">
+                        <div class="bg-white/5 p-2 rounded border border-white/5 flex items-center gap-2">
+                            <i class="fa-solid fa-vial text-fama-secondary"></i>
+                            <span>ASTM D-4060 (Abrasión)</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded border border-white/5 flex items-center gap-2">
+                            <i class="fa-solid fa-scale-balanced text-fama-secondary"></i>
+                            <span>ISO 868 (Dureza)</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded border border-white/5 flex items-center gap-2">
+                            <i class="fa-solid fa-fire-flame-curved text-fama-secondary"></i>
+                            <span>EN 13501-1 (Fuego)</span>
+                        </div>
+                        <div class="bg-white/5 p-2 rounded border border-white/5 flex items-center gap-2">
+                            <i class="fa-solid fa-droplet-slash text-fama-secondary"></i>
+                            <span>Impermeable 100%</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pt-8 text-center text-xs text-gray-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 FAMA Protección Industrial. Todos los derechos reservados.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FICHA TÉCNICA MODAL -->
+    <div id="tech-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div onclick="toggleModal()" class="fixed inset-0 bg-fama-bgDark/80 backdrop-blur-sm transition-opacity" aria-hidden="true"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border border-gray-100">
+                <div class="p-6 sm:p-8 space-y-6">
+                    <!-- Modal Header -->
+                    <div class="flex items-start justify-between">
+                        <div class="space-y-1">
+                            <span id="modal-tag" class="text-xs font-bold text-fama-primary uppercase tracking-wider bg-fama-primary/10 px-2.5 py-1 rounded-full">Categoría</span>
+                            <h3 class="text-2xl font-display font-bold text-fama-dark" id="modal-title">Ficha Técnica del Sistema</h3>
+                        </div>
+                        <button onclick="toggleModal()" class="text-gray-400 hover:text-gray-600 bg-gray-100 p-2 rounded-full focus:outline-none">
+                            <i class="fa-solid fa-xmark text-lg"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Body Description -->
+                    <div id="modal-description" class="text-sm text-gray-600">
+                        Especificación técnica.
+                    </div>
+
+                    <!-- Tech Specs Table -->
+                    <div class="border border-gray-100 rounded-2xl overflow-hidden text-xs">
+                        <div class="grid grid-cols-2 bg-gray-50 p-3 border-b border-gray-100 font-bold text-fama-dark">
+                            <span>Parámetro Físico / Químico</span>
+                            <span>Valor Certificado</span>
+                        </div>
+                        <div class="divide-y divide-gray-100" id="modal-specs">
+                            <!-- Dynamic items injected via JS -->
+                        </div>
+                    </div>
+
+                    <!-- Footer Action in Modal -->
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <button onclick="toggleModal(); window.location.href='#configurador'" class="flex-1 bg-fama-primary text-white font-bold py-3 rounded-xl hover:bg-fama-dark transition-colors text-center text-sm">
+                            Configurar este Sistema
+                        </button>
+                        <button onclick="toggleModal()" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition-colors text-center text-sm">
+                            Cerrar Ficha
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CUSTOM TOAST -->
+    <div id="custom-toast" class="fixed bottom-5 right-5 z-50 max-w-sm bg-white border border-green-200 rounded-2xl shadow-2xl p-4 flex items-start gap-3 translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0 text-lg">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="space-y-1">
+            <h4 class="font-bold text-sm text-gray-900" id="toast-title">¡Envío Exitoso!</h4>
+            <p class="text-xs text-gray-500" id="toast-body">Tu propuesta técnica ha sido generada correctamente.</p>
+        </div>
+        <button onclick="hideToast()" class="text-gray-400 hover:text-gray-600 ml-auto">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hide mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // INTERACTIVE VISUALIZER LOGIC
+        let currentEnvironment = 'industrial';
+        let currentColor = '#0E5E6F';
+
+        function setEnvironment(env) {
+            currentEnvironment = env;
+            
+            const visIndustrial = document.getElementById('vis-industrial');
+            const visDeportivo = document.getElementById('vis-deportivo');
+            
+            const btnIndustrial = document.getElementById('btn-env-industrial');
+            const btnDeportivo = document.getElementById('btn-env-deportivo');
+
+            if (env === 'industrial') {
+                visIndustrial.classList.remove('opacity-0', 'pointer-events-none');
+                visDeportivo.classList.add('opacity-0', 'pointer-events-none');
+                
+                btnIndustrial.className = "p-3 rounded-xl border-2 border-fama-secondary bg-fama-primary text-white font-bold text-sm transition-all flex flex-col items-center justify-center gap-2 shadow-lg";
+                btnDeportivo.className = "p-3 rounded-xl border-2 border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 font-bold text-sm transition-all flex flex-col items-center justify-center gap-2";
+                
+                // Update Spec Cards
+                document.getElementById('spec-system').innerText = "Autonivelante Epóxico";
+                document.getElementById('spec-thickness').innerText = "3.0 mm";
+                document.getElementById('spec-traffic').innerText = "Pesado (Montacargas)";
+                document.getElementById('spec-finish').innerText = "Brillante Autolimpiante";
+                
+                document.getElementById('industrial-floor-path').setAttribute('fill', currentColor);
+            } else {
+                visDeportivo.classList.remove('opacity-0', 'pointer-events-none');
+                visIndustrial.classList.add('opacity-0', 'pointer-events-none');
+
+                btnDeportivo.className = "p-3 rounded-xl border-2 border-fama-secondary bg-fama-primary text-white font-bold text-sm transition-all flex flex-col items-center justify-center gap-2 shadow-lg";
+                btnIndustrial.className = "p-3 rounded-xl border-2 border-white/10 bg-white/5 text-gray-300 hover:bg-white/10 font-bold text-sm transition-all flex flex-col items-center justify-center gap-2";
+                
+                // Update Spec Cards
+                document.getElementById('spec-system').innerText = "Poliuretano Elástico";
+                document.getElementById('spec-thickness').innerText = "4.5 mm (Multicapas)";
+                document.getElementById('spec-traffic').innerText = "Deportivo de Alto Rendimiento";
+                document.getElementById('spec-finish').innerText = "Mate Antideslizante (Fricción Óptima)";
+
+                document.getElementById('deportivo-floor-path').setAttribute('fill', currentColor);
+            }
+        }
+
+        function setFloorColor(hexColor, colorName) {
+            currentColor = hexColor;
+            document.getElementById('selected-color-name').innerText = colorName;
+
+            const buttons = document.querySelectorAll('#color-selectors button');
+            buttons.forEach(btn => {
+                const isMatch = btn.getAttribute('onclick').includes(hexColor);
+                if (isMatch) {
+                    btn.classList.add('border-white');
+                    btn.classList.remove('border-transparent');
+                } else {
+                    btn.classList.remove('border-white');
+                    btn.classList.add('border-transparent');
+                }
+            });
+
+            if (currentEnvironment === 'industrial') {
+                document.getElementById('industrial-floor-path').setAttribute('fill', hexColor);
+            } else {
+                document.getElementById('deportivo-floor-path').setAttribute('fill', hexColor);
+            }
+        }
+
+        // RE-DESIGNED TECHNICAL SPECIFICATION WIDGET LOGIC (No Pricing Elements)
+        function updateTechnicalSpecification() {
+            const area = parseFloat(document.getElementById('calc-area').value) || 0;
+            const system = document.getElementById('calc-system').value;
+            const concreteState = document.getElementById('calc-concrete').value;
+            const hasDemarcation = document.getElementById('calc-demarcation').checked;
+            const hasAntislip = document.getElementById('calc-antislip').checked;
+
+            if (area <= 0) return;
+
+            // System Properties Mapping
+            let systemName = "Autonivelante Epóxico";
+            let thickness = "3.0 mm";
+            switch(system) {
+                case 'epoxico-estandar':
+                    systemName = "Pintura Epóxica Antidust";
+                    thickness = "1.5 mm (Multicapa Delgado)";
+                    break;
+                case 'epoxico-autonivelante':
+                    systemName = "Autonivelante Epóxico Industrial";
+                    thickness = "3.0 mm (Sólidos 100%)";
+                    break;
+                case 'deportivo-poliuretano':
+                    systemName = "Poliuretano Deportivo Court Play";
+                    thickness = "4.5 mm (Con Base Elástica)";
+                    break;
+                case 'deportivo-acrilico':
+                    systemName = "Acrílico Deportivo Elástico";
+                    thickness = "2.5 mm (Resistente UV)";
+                    break;
+                case 'uretano-cementicio':
+                    systemName = "Uretano Cementicio de Alta Resistencia";
+                    thickness = "6.0 mm (Grado Autolimpiante)";
+                    break;
+            }
+
+            // Concrete State Mapping (Surface Preparation Technique)
+            let prepMethod = "Desbaste Diamantado + Aspirado";
+            switch(concreteState) {
+                case 'nuevo':
+                    prepMethod = "Lijado Diamantado de Apertura de Poro + Aspirado Ciclónico";
+                    break;
+                case 'regular':
+                    prepMethod = "Desbaste Mecánico con Segmentos de Metal + Sellado de Fisuras";
+                    break;
+                case 'danado':
+                    prepMethod = "Fresado Mecánico Profundo + Reconstrucción Estructural con Mortero Epoxi";
+                    break;
+            }
+
+            // Additional services selected mapping
+            let addonsText = "Estándar";
+            if (hasDemarcation && hasAntislip) {
+                addonsText = "Antideslizante + Demarcación Vial";
+            } else if (hasDemarcation) {
+                addonsText = "Demarcación Vial / Canchas";
+            } else if (hasAntislip) {
+                addonsText = "Aditivo Antideslizante Silíceo";
+            } else {
+                addonsText = "Ninguno (Acabado Liso)";
+            }
+
+            // Update DOM Elements
+            document.getElementById('summary-system').innerText = systemName;
+            document.getElementById('summary-thickness').innerText = thickness;
+            document.getElementById('summary-prep').innerText = prepMethod;
+            document.getElementById('summary-addons').innerText = addonsText;
+        }
+
+        // Initialize configurator on page load
+        window.addEventListener('load', () => {
+            updateTechnicalSpecification();
+        });
+
+
+        // MODALS & TECHNICAL SPECIFICATIONS DATA
+        const modalData = {
+            epoxico: {
+                title: "Ficha Técnica: Autonivelante Epóxico FAMA SL30",
+                tag: "Autonivelante Industrial",
+                description: "Sistema epóxico de 3 componentes libre de solventes, formulado para la protección de pisos de concreto sujetos a tránsito industrial severo. Acabado brillante autolimpiante, aséptico y monolítico.",
+                specs: [
+                    { p: "Resistencia a la compresión (ASTM C-579)", v: "750 kg/cm²" },
+                    { p: "Dureza Shore D (ASTM D-2240)", v: "82" },
+                    { p: "Resistencia a la abrasión Taber (ASTM D-4060)", v: "32 mg de pérdida" },
+                    { p: "Adherencia al concreto", v: "100% falla cohesiva del concreto" },
+                    { p: "Temperatura de servicio", v: "-10°C hasta 60°C" }
+                ]
+            },
+            deportivo: {
+                title: "Ficha Técnica: Sistema Deportivo FAMA Court Play",
+                tag: "Revestimiento Deportivo",
+                description: "Recubrimiento multicapas flexible formulado a base de resinas acrílicas y poliuretanos elásticos con amortiguación integrada. Diseñado para proporcionar la máxima absorción de impactos y un coeficiente de fricción controlado.",
+                specs: [
+                    { p: "Absorción de impacto de choque (EN 14808)", v: "34% de amortiguación" },
+                    { p: "Elongación a la ruptura (ASTM D-412)", v: "120%" },
+                    { p: "Resistencia al deslizamiento (EN 13036-4)", v: "Clase 1 (Seguro en seco y mojado)" },
+                    { p: "Resistencia al impacto (EN 1517)", v: "Pasa (> 8 Nm)" },
+                    { p: "Brillo de superficie", v: "Mate Antirreflejante" }
+                ]
+            },
+            poliuretano: {
+                title: "Ficha Técnica: Uretano Cementicio FAMA Extreme Temp",
+                tag: "Sistemas Térmico-Químicos",
+                description: "Mortero híbrido de poliuretano, cemento y agregados de sílice diseñado para resistir las condiciones más extremas en el sector agroalimentario y químico. Soporta derrames químicos continuos e hidrolavados a vapor.",
+                specs: [
+                    { p: "Rango de Temperatura Operativa", v: "-40°C hasta 120°C" },
+                    { p: "Resistencia a la compresión", v: "620 kg/cm²" },
+                    { p: "Coeficiente de dilatación térmica", v: "Similar al concreto" },
+                    { p: "Cumplimiento Higiénico", v: "HACCP & FDA Approved (Antibacterial)" },
+                    { p: "Tiempo de curado para tránsito peatonal", v: "8 Horas" }
+                ]
+            }
+        };
+
+        function toggleModal(key = '') {
+            const modal = document.getElementById('tech-modal');
+            if (key && modalData[key]) {
+                const data = modalData[key];
+                document.getElementById('modal-title').innerText = data.title;
+                document.getElementById('modal-tag').innerText = data.tag;
+                document.getElementById('modal-description').innerText = data.description;
+                
+                const specsContainer = document.getElementById('modal-specs');
+                specsContainer.innerHTML = '';
+                
+                data.specs.forEach(spec => {
+                    const row = document.createElement('div');
+                    row.className = "grid grid-cols-2 p-3 hover:bg-gray-50 transition-colors";
+                    row.innerHTML = `
+                        <span class="font-medium text-gray-700">${spec.p}</span>
+                        <span class="font-bold text-fama-primary">${spec.v}</span>
+                    `;
+                    specsContainer.appendChild(row);
+                });
+
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // PRE-FILL FORM FROM CONFIGURATOR ACTION (No price ranges mentioned)
+        function openModalAndPreFill() {
+            const area = document.getElementById('calc-area').value;
+            const systemText = document.getElementById('calc-system').options[document.getElementById('calc-system').selectedIndex].text;
+            const concreteText = document.getElementById('calc-concrete').options[document.getElementById('calc-concrete').selectedIndex].text;
+            
+            const summarySystem = document.getElementById('summary-system').innerText;
+            const summaryThickness = document.getElementById('summary-thickness').innerText;
+            const summaryPrep = document.getElementById('summary-prep').innerText;
+            const summaryAddons = document.getElementById('summary-addons').innerText;
+
+            const messageField = document.getElementById('contact-message');
+            messageField.value = `Hola, me gustaría agendar una visita técnica e inspección de concreto gratuita para recibir una cotización formal. He configurado mi proyecto en su web con las siguientes características:\n\n- Área aproximada: ${area} m²\n- Sistema configurado: ${systemText} (Espesor: ${summaryThickness})\n- Estado actual del soporte: ${concreteText}\n- Preparación recomendada: ${summaryPrep}\n- Tratamientos adicionales: ${summaryAddons}`;
+
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+
+        // FORM SUBMIT HANDLER
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+
+            showToast("¡Solicitud Recibida!", `Hola ${name}, hemos guardado tus especificaciones técnicas. Un ingeniero especialista de FAMA se pondrá en contacto contigo para coordinar la inspección gratuita.`);
+            
+            document.getElementById('contact-form').reset();
+        }
+
+        function showToast(title, body) {
+            const toast = document.getElementById('custom-toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-body').innerText = body;
+
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                hideToast();
+            }, 6000);
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('custom-toast');
+            toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }
+    </script>
+</body>
+</html>
