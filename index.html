@@ -113,6 +113,7 @@
                     <a href="#inicio" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Inicio</a>
                     <a href="#nosotros" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Nosotros</a>
                     <a href="#servicios" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Servicios</a>
+                    <a href="#proyectos-albums" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Proyectos</a>
                     <a href="#metodologia" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Metodología</a>
                     <a href="#sectores" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Sectores</a>
                     <a href="#contacto" class="text-gray-600 hover:text-fama-mid font-medium transition-colors">Contacto</a>
@@ -133,6 +134,7 @@
                 <a href="#inicio" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Inicio</a>
                 <a href="#nosotros" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Nosotros</a>
                 <a href="#servicios" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Servicios</a>
+                <a href="#proyectos-albums" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Proyectos</a>
                 <a href="#metodologia" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Metodología</a>
                 <a href="#sectores" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Sectores</a>
                 <a href="#contacto" class="block px-3 py-2 text-gray-700 hover:bg-fama-light/20 rounded-md">Contacto</a>
@@ -551,6 +553,217 @@
         </div>
     </section>
 
+    <!-- ÁLBUMES DE PROYECTOS -->
+    <section id="proyectos-albums" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-fama-mid font-bold tracking-wider uppercase text-sm mb-2">Nuestro Portafolio</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-gray-900">Álbum de Proyectos Realizados</h3>
+                <p class="text-gray-600 mt-4 max-w-3xl mx-auto">
+                    Explora nuestros proyectos ejecutados con excelencia. Cada obra representa nuestro compromiso con la calidad y la durabilidad en protección industrial.
+                </p>
+            </div>
+
+            <!-- Filtros por categoría -->
+            <div class="flex justify-center gap-3 mb-12 flex-wrap">
+                <button onclick="filterProjects('all')" class="px-6 py-2 bg-fama-dark text-white rounded-full font-semibold hover:bg-fama-mid transition-colors">Todos</button>
+                <button onclick="filterProjects('industrial')" class="px-6 py-2 bg-white border-2 border-fama-dark text-fama-dark rounded-full font-semibold hover:bg-fama-dark hover:text-white transition-colors">Pisos Industriales</button>
+                <button onclick="filterProjects('deportivo')" class="px-6 py-2 bg-white border-2 border-fama-dark text-fama-dark rounded-full font-semibold hover:bg-fama-dark hover:text-white transition-colors">Campos Deportivos</button>
+                <button onclick="filterProjects('otro')" class="px-6 py-2 bg-white border-2 border-fama-dark text-fama-dark rounded-full font-semibold hover:bg-fama-dark hover:text-white transition-colors">Otros</button>
+            </div>
+
+            <!-- Galería de proyectos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Proyecto 1 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="industrial" onclick="openModal(0)">
+                    <div class="absolute inset-0 bg-fama-dark/20 group-hover:bg-fama-dark/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-blue-400 to-blue-600">
+                        <i class="fas fa-warehouse text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Planta Industrial Sur</h5>
+                        <p class="text-sm text-fama-light">Piso Epóxico Autonivelante • 2500 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="deportivo" onclick="openModal(1)">
+                    <div class="absolute inset-0 bg-fama-mid/20 group-hover:bg-fama-mid/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-green-400 to-green-600">
+                        <i class="fas fa-volleyball-ball text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Complejo Deportivo</h5>
+                        <p class="text-sm text-fama-light">Pintura Acrílica • Cancha Múltiple 1800 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="industrial" onclick="openModal(2)">
+                    <div class="absolute inset-0 bg-fama-dark/20 group-hover:bg-fama-dark/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-purple-400 to-purple-600">
+                        <i class="fas fa-car text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Estacionamiento Subterráneo</h5>
+                        <p class="text-sm text-fama-light">Demarcación y Poliuretano • 3200 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="industrial" onclick="openModal(3)">
+                    <div class="absolute inset-0 bg-fama-mid/20 group-hover:bg-fama-mid/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-red-400 to-red-600">
+                        <i class="fas fa-flask text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Laboratorios Médicos</h5>
+                        <p class="text-sm text-fama-light">Curva Sanitaria y Epóxico • 950 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 5 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="industrial" onclick="openModal(4)">
+                    <div class="absolute inset-0 bg-fama-dark/20 group-hover:bg-fama-dark/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-yellow-400 to-yellow-600">
+                        <i class="fas fa-box text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Centro de Distribución</h5>
+                        <p class="text-sm text-fama-light">Piso Industrial Poliuretano • 4500 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 6 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="deportivo" onclick="openModal(5)">
+                    <div class="absolute inset-0 bg-fama-mid/20 group-hover:bg-fama-mid/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-orange-400 to-orange-600">
+                        <i class="fas fa-basketball-ball text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Cancha de Baloncesto</h5>
+                        <p class="text-sm text-fama-light">Pintura Profesional • Cancha Olímpica</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 7 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="otro" onclick="openModal(6)">
+                    <div class="absolute inset-0 bg-fama-dark/20 group-hover:bg-fama-dark/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-pink-400 to-pink-600">
+                        <i class="fas fa-utensils text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Planta Alimentaria</h5>
+                        <p class="text-sm text-fama-light">Resina Epóxica Sanitaria • 2100 m²</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 8 -->
+                <div class="project-card group relative overflow-hidden rounded-lg aspect-square bg-gray-200 cursor-pointer shadow-lg hover:shadow-xl transition-all" data-category="otro" onclick="openModal(7)">
+                    <div class="absolute inset-0 bg-fama-mid/20 group-hover:bg-fama-mid/70 transition-all duration-300 z-10"></div>
+                    <div class="w-full h-full flex justify-center items-center bg-gradient-to-br from-cyan-400 to-cyan-600">
+                        <i class="fas fa-shirt text-6xl text-white/30"></i>
+                    </div>
+                    <div class="absolute bottom-0 left-0 w-full p-6 text-white translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-20">
+                        <h5 class="font-bold text-xl">Planta Textil</h5>
+                        <p class="text-sm text-fama-light">Piso Antiestático • 3600 m²</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón para más proyectos -->
+            <div class="text-center mt-12">
+                <a href="#contacto" class="inline-block px-8 py-4 bg-fama-dark hover:bg-fama-mid text-white rounded-full font-bold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Solicitar Información sobre tus Proyectos
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL para visualizar proyectos -->
+    <div id="projectModal" class="hidden fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+            <!-- Header del Modal -->
+            <div class="sticky top-0 bg-fama-dark text-white p-6 flex justify-between items-center rounded-t-xl">
+                <h3 id="modalTitle" class="text-2xl font-bold">Título del Proyecto</h3>
+                <button onclick="closeModal()" class="text-white hover:text-gray-300 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <!-- Contenido del Modal -->
+            <div class="p-8">
+                <!-- Imagen del proyecto -->
+                <div id="modalImage" class="w-full h-96 bg-gradient-to-br from-blue-400 to-blue-600 rounded-lg mb-6 flex items-center justify-center">
+                    <i class="fas fa-image text-white text-6xl opacity-30"></i>
+                </div>
+
+                <!-- Detalles del proyecto -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="border-l-4 border-fama-dark pl-4">
+                        <h4 class="text-sm font-bold text-fama-mid uppercase mb-1">Área de Cobertura</h4>
+                        <p id="modalArea" class="text-2xl font-bold text-gray-900">2,500 m²</p>
+                    </div>
+                    <div class="border-l-4 border-fama-mid pl-4">
+                        <h4 class="text-sm font-bold text-fama-mid uppercase mb-1">Sistema Utilizado</h4>
+                        <p id="modalSystem" class="text-2xl font-bold text-gray-900">Epóxico Autonivelante</p>
+                    </div>
+                    <div class="border-l-4 border-fama-dark pl-4">
+                        <h4 class="text-sm font-bold text-fama-mid uppercase mb-1">Duración del Proyecto</h4>
+                        <p id="modalDuration" class="text-2xl font-bold text-gray-900">45 días</p>
+                    </div>
+                    <div class="border-l-4 border-fama-mid pl-4">
+                        <h4 class="text-sm font-bold text-fama-mid uppercase mb-1">Sector Industrial</h4>
+                        <p id="modalSector" class="text-2xl font-bold text-gray-900">Manufactura</p>
+                    </div>
+                </div>
+
+                <!-- Descripción -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Descripción del Proyecto</h4>
+                    <p id="modalDescription" class="text-gray-600 leading-relaxed">
+                        Descripción detallada del proyecto será mostrada aquí con toda la información técnica y logros alcanzados.
+                    </p>
+                </div>
+
+                <!-- Características destacadas -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Características Destacadas</h4>
+                    <ul id="modalFeatures" class="grid grid-cols-2 gap-3">
+                        <li class="flex items-center gap-2 text-gray-700">
+                            <i class="fas fa-check-circle text-fama-mid"></i> Precisión milimétrica
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Galería de fotos -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-bold text-gray-900 mb-3">Galería de Fotos</h4>
+                    <div id="modalGallery" class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        <div class="aspect-square bg-gradient-to-br from-blue-300 to-blue-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-image text-white text-3xl opacity-40"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-blue-300 to-blue-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-image text-white text-3xl opacity-40"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-blue-300 to-blue-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-image text-white text-3xl opacity-40"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón de contacto -->
+                <div class="bg-fama-bg p-6 rounded-lg">
+                    <p class="text-gray-600 mb-4">¿Interesado en un proyecto similar? Contacta con nuestros especialistas.</p>
+                    <a href="https://wa.me/51999111222?text=Hola%20FAMA,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20proyectos%20similares." target="_blank" class="block w-full text-center bg-green-500 hover:bg-green-600 text-white font-bold py-3 rounded-lg transition-colors">
+                        <i class="fab fa-whatsapp mr-2"></i> Consulta por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- CLIENTES Y CERTIFICADOS -->
     <section class="py-16 bg-fama-dark text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -711,20 +924,32 @@
                 <!-- Bot Message -->
                 <div class="flex flex-col gap-1 items-start">
                     <div class="bg-white border border-gray-200 text-gray-800 text-sm p-3 rounded-2xl rounded-tl-none shadow-sm inline-block max-w-[85%]">
-                        ¡Hola! 👋 Soy el asistente virtual de FAMA. ¿En qué te puedo ayudar hoy con respecto a pisos industriales o campos deportivos?
+                        ¡Hola! 👋 Soy el asistente virtual de FAMA. ¿En qué te puedo ayudar? Selecciona uno de los temas:
                     </div>
                 </div>
                 
                 <!-- Opciones Preguntas Frecuentes -->
                 <div class="flex flex-col gap-2 mt-2">
-                    <button onclick="handleFAQ('¿Qué servicios ofrecen?')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
-                        ¿Qué servicios ofrecen?
+                    <button onclick="handleFAQ('sistemas')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        🏭 Sistemas de Revestimiento
                     </button>
-                    <button onclick="handleFAQ('¿Brindan servicio a nivel nacional?')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
-                        ¿Brindan servicio a nivel nacional?
+                    <button onclick="handleFAQ('certificaciones')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        ✅ Certificaciones y Estándares
                     </button>
-                    <button onclick="handleFAQ('¿Cuál es su garantía?')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
-                        ¿Cuál es su garantía?
+                    <button onclick="handleFAQ('campos')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        ⚽ Campos Deportivos
+                    </button>
+                    <button onclick="handleFAQ('resistencia')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        💪 Durabilidad y Resistencia
+                    </button>
+                    <button onclick="handleFAQ('calidad')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        🔍 Control de Calidad
+                    </button>
+                    <button onclick="handleFAQ('soporte')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        🤝 Garantía y Soporte
+                    </button>
+                    <button onclick="handleFAQ('experiencia')" class="text-left text-xs bg-fama-light/20 hover:bg-fama-light/40 text-fama-dark font-medium p-2 rounded-lg border border-fama-light/30 transition-colors">
+                        🏆 Experiencia Sectorial
                     </button>
                 </div>
             </div>
@@ -885,26 +1110,304 @@
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-        function handleFAQ(question) {
-            appendMessage('user', question);
+        function handleFAQ(category) {
+            let question = '';
+            let answer = '';
             
-            setTimeout(() => {
-                let answer = "";
-                if (question === '¿Qué servicios ofrecen?') {
-                    answer = "Ofrecemos tres servicios principales: Revestimiento de Pisos Industriales (epóxicos, poliuretanos, antiacídicos), Campos Deportivos Profesionales con especificaciones internacionales, y Preparación y Pulido de Superficies con equipos de última generación.";
-                } else if (question === '¿Brindan servicio a nivel nacional?') {
-                    answer = "Sí, nuestra sede está en Lima, Perú, pero atendemos proyectos a nivel nacional en todo el país. Contamos con equipos especializados para ejecutar obras en tiempo récord. 🇵🇪";
-                } else if (question === '¿Cuál es su garantía?') {
-                    answer = "Ofrecemos garantía extendida en todos nuestros trabajos. Los sistemas varían: Epóxicos 7-10 años, Poliuretanos 10-15 años, Antiacídicos 12-20 años. Incluye mantenimiento integral y soporte continuo.";
-                }
-                appendMessage('bot', answer);
+            switch(category) {
+                case 'sistemas':
+                    question = '¿Qué tipos de sistemas de revestimiento ofrecen y cuánto duran?';
+                    answer = 'Ofrecemos tres sistemas principales adaptados a cada industria:\n\n' +
+                        '🔹 Resinas Epóxicas: Para química, alimentos y farmacéutica. Durabilidad: 7-10 años.\n\n' +
+                        '🔹 Poliuretanos: Para logística, manufactura y tráfico intenso. Durabilidad: 10-15 años.\n\n' +
+                        '🔹 Antiacídicos: Para minería y química pesada. Durabilidad: 12-20 años.\n\n' +
+                        'Cada sistema se analiza según tus condiciones específicas.';
+                    break;
+                    
+                case 'certificaciones':
+                    question = '¿Con qué certificaciones cumplen sus proyectos?';
+                    answer = 'Ejecutamos bajo normas ISO y estándares internacionales. Contamos con:\n\n' +
+                        '✅ Ingenieros certificados\n' +
+                        '✅ Instaladores homologados por marcas líderes\n' +
+                        '✅ Cada proceso validado y documentado\n' +
+                        '✅ Normas internacionales de seguridad\n\n' +
+                        'Garantizamos cumplimiento total en documentación y certificaciones.';
+                    break;
+                    
+                case 'campos':
+                    question = '¿Qué normativas reglamentarias aseguran en campos deportivos?';
+                    answer = 'Para campos deportivos garantizamos:\n\n' +
+                        '⚽ Precisión milimétrica según FIFA, FIBA y FIVB\n' +
+                        '⚽ Demarcación exacta según reglamentos internacionales\n' +
+                        '⚽ Pinturas de máxima durabilidad y visibilidad climática\n' +
+                        '⚽ Absorción de impacto certificada en laboratorios\n' +
+                        '⚽ Acabados profesionales\n\n' +
+                        'Cada cancha cumple especificaciones internacionales comprobadas.';
+                    break;
+                    
+                case 'resistencia':
+                    question = '¿Cómo aseguran que el piso soportará mi operación?';
+                    answer = 'Nuestra metodología de 3 fases garantiza resistencia:\n\n' +
+                        '📋 FASE 1 - DIAGNÓSTICO:\n' +
+                        'Análisis profundo de tu operación y terreno\n' +
+                        'Ingeniería certificada con cálculos de resistencia\n' +
+                        'Simulaciones para garantizar durabilidad\n\n' +
+                        '📋 FASE 2 - EJECUCIÓN:\n' +
+                        'Preparación precisa de superficies\n' +
+                        'Aplicación con equipos especializados\n' +
+                        'Inspección en cada etapa\n\n' +
+                        'Resultado: Piso que NO falla bajo condiciones reales.';
+                    break;
+                    
+                case 'calidad':
+                    question = '¿Qué medidas de control de calidad aplican?';
+                    answer = 'Durante la instalación aplicamos:\n\n' +
+                        '🔍 Preparación de superficie precisa\n' +
+                        '🔍 Aplicación con equipos de alta precisión\n' +
+                        '🔍 Inspección minuciosa en cada etapa\n' +
+                        '🔍 Control de calidad en tiempo real\n' +
+                        '🔍 Verificación de especificaciones técnicas\n\n' +
+                        'Garantizamos que cada cm² cumpla los estándares requeridos.';
+                    break;
+                    
+                case 'soporte':
+                    question = '¿Qué ocurre después de la entrega?';
+                    answer = 'Nuestro compromiso continúa en FASE 3:\n\n' +
+                        '🤝 Capacitación al personal\n' +
+                        '🤝 Planes de mantenimiento integral\n' +
+                        '🤝 Garantía extendida\n' +
+                        '🤝 Continuidad operativa asegurada\n\n' +
+                        'Para campos deportivos incluimos mantenimiento integral con cobertura de reparaciones.\n\n' +
+                        'Tu inversión está protegida a largo plazo.';
+                    break;
+                    
+                case 'experiencia':
+                    question = '¿En qué sectores peruanos tienen experiencia?';
+                    answer = 'Hemos ejecutado proyectos en sectores clave de Perú:\n\n' +
+                        '🏭 Manufactura e Industria Pesada\n' +
+                        '📦 Logística y Centros de Distribución\n' +
+                        '🍔 Industria Alimentaria y Bebidas\n' +
+                        '👔 Sector Textil y Confecciones\n' +
+                        '🛒 Bienes de Consumo y Retail\n' +
+                        '⚽ Instituciones Deportivas y Educativas\n\n' +
+                        'Conocimiento real en operaciones de cada sector.';
+                    break;
+            }
+            
+            if (question) {
+                appendMessage('user', question);
                 
                 setTimeout(() => {
-                    appendMessage('bot', "¿Necesitas una cotización exacta? Haz clic en el botón verde de abajo para hablar con un asesor por WhatsApp. 🟢");
-                }, 1000);
-                
-            }, 600);
+                    appendMessage('bot', answer);
+                    
+                    setTimeout(() => {
+                        appendMessage('bot', '¿Necesitas más información o una cotización? Haz clic abajo para hablar con un asesor por WhatsApp. 📞');
+                    }, 1200);
+                    
+                }, 600);
+            }
         }
+
+        // --- FILTRADO DE PROYECTOS ---
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 10);
+                } else {
+                    if (card.dataset.category === category) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        card.style.opacity = '0';
+                        setTimeout(() => card.style.display = 'none', 300);
+                    }
+                }
+            });
+        }
+
+        // --- DATOS DE PROYECTOS ---
+        const projectsData = [
+            {
+                title: 'Planta Industrial Sur',
+                area: '2,500 m²',
+                system: 'Piso Epóxico Autonivelante',
+                duration: '45 días',
+                sector: 'Manufactura',
+                description: 'Proyecto de revestimiento integral de planta industrial dedicada a la manufactura de componentes electrónicos. Se aplicó sistema epóxico autonivelante de alta resistencia química con acabado de brillo profesional. El proyecto incluyó preparación completa de superficie, aplicación en tres capas y sistema de curado acelerado.',
+                features: [
+                    'Resistencia química extrema',
+                    'Acabado de alto brillo',
+                    'Mantenimiento mínimo',
+                    'Tráfico pesado soportado',
+                    'Certificado ISO 9001'
+                ],
+                gradient: 'from-blue-400 to-blue-600'
+            },
+            {
+                title: 'Complejo Deportivo',
+                area: '1,800 m²',
+                system: 'Pintura Acrílica Deportiva',
+                duration: '30 días',
+                sector: 'Institucional Deportivo',
+                description: 'Construcción de cancha múltiple con especificaciones internacionales para voleibol, básquetbol y badminton. Se utilizó pintura acrílica de máxima durabilidad con certificación de absorción de impacto. Demarcación precisa según reglamentos FIVB, FIBA y normativas internacionales.',
+                features: [
+                    'Precisión milimétrica FIFA',
+                    'Absorción de impacto certificada',
+                    'Resistencia UV prolongada',
+                    'Cancha múltiple',
+                    'Demarcación profesional'
+                ],
+                gradient: 'from-green-400 to-green-600'
+            },
+            {
+                title: 'Estacionamiento Subterráneo',
+                area: '3,200 m²',
+                system: 'Demarcación y Poliuretano',
+                duration: '60 días',
+                sector: 'Infraestructura',
+                description: 'Piso industrial de estacionamiento subterráneo con sistema de poliuretano de máxima resistencia al tráfico vehicular continuo. Incluye demarcación de espacios con precisión láser y marcado de seguridad. Sistema antideslizante con especial atención a áreas húmedas.',
+                features: [
+                    'Resistencia a derrames químicos',
+                    'Demarcación con precisión láser',
+                    'Superficie antideslizante',
+                    'Fácil limpieza',
+                    'Durabilidad 10-15 años'
+                ],
+                gradient: 'from-purple-400 to-purple-600'
+            },
+            {
+                title: 'Laboratorios Médicos',
+                area: '950 m²',
+                system: 'Curva Sanitaria y Epóxico',
+                duration: '35 días',
+                sector: 'Salud',
+                description: 'Revestimiento de laboratorios médicos con sistema de curva sanitaria integrada para fácil limpieza y desinfección. Sistema epóxico de grado farmacéutico con acabado antimicrobiano. Cumple con normativas sanitarias internacionales más estrictas.',
+                features: [
+                    'Curva sanitaria integrada',
+                    'Acabado antimicrobiano',
+                    'Fácil limpieza',
+                    'Normas sanitarias internacionales',
+                    'Resistencia química'
+                ],
+                gradient: 'from-red-400 to-red-600'
+            },
+            {
+                title: 'Centro de Distribución',
+                area: '4,500 m²',
+                system: 'Piso Industrial Poliuretano',
+                duration: '90 días',
+                sector: 'Logística',
+                description: 'Proyecto de gran envergadura para centro de distribución con tráfico de equipos de carga pesada. Sistema de poliuretano con máxima resistencia al desgarre y excelente antideslizamiento. Incluye demarcación de pasillos y áreas de seguridad.',
+                features: [
+                    'Tráfico intenso soportado',
+                    'Resistencia a desgarre',
+                    'Demarcación de seguridad',
+                    'Bajo mantenimiento',
+                    'Durabilidad extendida'
+                ],
+                gradient: 'from-yellow-400 to-yellow-600'
+            },
+            {
+                title: 'Cancha de Baloncesto',
+                area: '840 m²',
+                system: 'Pintura Profesional Olímpica',
+                duration: '25 días',
+                sector: 'Deportivo',
+                description: 'Cancha de baloncesto profesional con especificaciones olímpicas y demarcación exacta. Pintura de máxima durabilidad con sistema de amortiguación de impacto. Certificada por federaciones internacionales de baloncesto.',
+                features: [
+                    'Especificaciones olímpicas',
+                    'Amortiguación de impacto',
+                    'Demarcación precisa FIBA',
+                    'Resistencia UV',
+                    'Acabado antideslizante'
+                ],
+                gradient: 'from-orange-400 to-orange-600'
+            },
+            {
+                title: 'Planta Alimentaria',
+                area: '2,100 m²',
+                system: 'Resina Epóxica Sanitaria',
+                duration: '50 días',
+                sector: 'Alimentos y Bebidas',
+                description: 'Revestimiento de planta de procesamiento de alimentos con sistema de resina epóxica de grado sanitario. Cumple con todas las normas de higiene alimentaria internacionales. Incorpora curvas sanitarias y superficie antideslizante.',
+                features: [
+                    'Grado sanitario alimentario',
+                    'Curva sanitaria',
+                    'Resistencia a químicos de limpieza',
+                    'Fácil desinfección',
+                    'Certificación HACCP'
+                ],
+                gradient: 'from-pink-400 to-pink-600'
+            },
+            {
+                title: 'Planta Textil',
+                area: '3,600 m²',
+                system: 'Piso Antiestático',
+                duration: '70 días',
+                sector: 'Textil',
+                description: 'Piso industrial antiestático para planta de confecciones con especial énfasis en disipación de carga estática. Sistema epóxico conductivo que previene daños a equipos sensibles. Cumple con normativas de seguridad electrostática.',
+                features: [
+                    'Propiedades antiestáticas',
+                    'Disipación de carga',
+                    'Resistencia al desgarre',
+                    'Bajo mantenimiento',
+                    'Durabilidad comprobada'
+                ],
+                gradient: 'from-cyan-400 to-cyan-600'
+            }
+        ];
+
+        // --- MODAL FUNCTIONS ---
+        function openModal(projectIndex) {
+            const project = projectsData[projectIndex];
+            const modal = document.getElementById('projectModal');
+
+            // Actualizar contenido del modal
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalArea').textContent = project.area;
+            document.getElementById('modalSystem').textContent = project.system;
+            document.getElementById('modalDuration').textContent = project.duration;
+            document.getElementById('modalSector').textContent = project.sector;
+            document.getElementById('modalDescription').textContent = project.description;
+
+            // Actualizar imagen con gradiente
+            const imageDiv = document.getElementById('modalImage');
+            imageDiv.className = `w-full h-96 bg-gradient-to-br ${project.gradient} rounded-lg mb-6 flex items-center justify-center`;
+
+            // Actualizar características
+            const featuresList = document.getElementById('modalFeatures');
+            featuresList.innerHTML = project.features.map(feature => 
+                `<li class="flex items-center gap-2 text-gray-700">
+                    <i class="fas fa-check-circle text-fama-mid"></i> ${feature}
+                </li>`
+            ).join('');
+
+            // Mostrar modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        document.getElementById('projectModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con tecla Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
