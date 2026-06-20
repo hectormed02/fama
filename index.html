@@ -1092,7 +1092,7 @@
             }
         }
 
-        function appendMessage(sender, text) {
+        function appendMessage(sender, text, isHTML = false) {
             const msgDiv = document.createElement('div');
             msgDiv.className = `flex flex-col gap-1 ${sender === 'user' ? 'items-end' : 'items-start'} animate-fade-in`;
             
@@ -1100,9 +1100,14 @@
             if (sender === 'user') {
                 bubble.className = "bg-fama-dark text-white text-sm p-3 rounded-2xl rounded-tr-none shadow-sm inline-block max-w-[85%]";
             } else {
-                bubble.className = "bg-white border border-gray-200 text-gray-800 text-sm p-3 rounded-2xl rounded-tl-none shadow-sm inline-block max-w-[85%]";
+                bubble.className = "bg-white border border-gray-200 text-gray-800 text-sm p-4 rounded-2xl rounded-tl-none shadow-sm inline-block max-w-[85%]";
             }
-            bubble.textContent = text;
+            
+            if (isHTML) {
+                bubble.innerHTML = text;
+            } else {
+                bubble.textContent = text;
+            }
             
             msgDiv.appendChild(bubble);
             chatMessages.appendChild(msgDiv);
@@ -1113,95 +1118,152 @@
         function handleFAQ(category) {
             let question = '';
             let answer = '';
+            let isHTML = true;
             
             switch(category) {
                 case 'sistemas':
                     question = '¿Qué tipos de sistemas de revestimiento ofrecen y cuánto duran?';
-                    answer = 'Ofrecemos tres sistemas principales adaptados a cada industria:\n\n' +
-                        '🔹 Resinas Epóxicas: Para química, alimentos y farmacéutica. Durabilidad: 7-10 años.\n\n' +
-                        '🔹 Poliuretanos: Para logística, manufactura y tráfico intenso. Durabilidad: 10-15 años.\n\n' +
-                        '🔹 Antiacídicos: Para minería y química pesada. Durabilidad: 12-20 años.\n\n' +
-                        'Cada sistema se analiza según tus condiciones específicas.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Ofrecemos tres sistemas principales adaptados a cada industria:</p>
+                        <div style="margin-bottom: 10px;">
+                            <p style="margin: 8px 0; color: #0d474d; font-weight: 600;">🔹 Resinas Epóxicas</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em;">Para química, alimentos y farmacéutica</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em; color: #1d5e66;">Durabilidad: <strong>7-10 años</strong></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <p style="margin: 8px 0; color: #0d474d; font-weight: 600;">🔹 Poliuretanos</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em;">Para logística, manufactura y tráfico intenso</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em; color: #1d5e66;">Durabilidad: <strong>10-15 años</strong></p>
+                        </div>
+                        <div style="margin-bottom: 10px;">
+                            <p style="margin: 8px 0; color: #0d474d; font-weight: 600;">🔹 Antiacídicos</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em;">Para minería y química pesada</p>
+                            <p style="margin: 4px 0 4px 20px; font-size: 0.9em; color: #1d5e66;">Durabilidad: <strong>12-20 años</strong></p>
+                        </div>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #666; font-style: italic;">Análisis personalizado según tus condiciones específicas</p>
+                    </div>
+                    `;
                     break;
                     
                 case 'certificaciones':
                     question = '¿Con qué certificaciones cumplen sus proyectos?';
-                    answer = 'Ejecutamos bajo normas ISO y estándares internacionales. Contamos con:\n\n' +
-                        '✅ Ingenieros certificados\n' +
-                        '✅ Instaladores homologados por marcas líderes\n' +
-                        '✅ Cada proceso validado y documentado\n' +
-                        '✅ Normas internacionales de seguridad\n\n' +
-                        'Garantizamos cumplimiento total en documentación y certificaciones.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Ejecutamos bajo normas ISO y estándares internacionales:</p>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">✓</span>Ingenieros certificados</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">✓</span>Instaladores homologados por marcas líderes</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">✓</span>Cada proceso validado y documentado</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">✓</span>Normas internacionales de seguridad</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #0d474d; font-weight: 600;">Garantizamos cumplimiento total en documentación y certificaciones.</p>
+                    </div>
+                    `;
                     break;
                     
                 case 'campos':
                     question = '¿Qué normativas reglamentarias aseguran en campos deportivos?';
-                    answer = 'Para campos deportivos garantizamos:\n\n' +
-                        '⚽ Precisión milimétrica según FIFA, FIBA y FIVB\n' +
-                        '⚽ Demarcación exacta según reglamentos internacionales\n' +
-                        '⚽ Pinturas de máxima durabilidad y visibilidad climática\n' +
-                        '⚽ Absorción de impacto certificada en laboratorios\n' +
-                        '⚽ Acabados profesionales\n\n' +
-                        'Cada cancha cumple especificaciones internacionales comprobadas.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Para campos deportivos garantizamos:</p>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span><strong>Precisión milimétrica</strong> (FIFA, FIBA, FIVB)</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span><strong>Demarcación exacta</strong> según reglamentos internacionales</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span><strong>Pinturas de máxima durabilidad</strong> y visibilidad climática</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span><strong>Absorción de impacto</strong> certificada en laboratorios</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span><strong>Acabados profesionales</strong></li>
+                        </ul>
+                    </div>
+                    `;
                     break;
                     
                 case 'resistencia':
                     question = '¿Cómo aseguran que el piso soportará mi operación?';
-                    answer = 'Nuestra metodología de 3 fases garantiza resistencia:\n\n' +
-                        '📋 FASE 1 - DIAGNÓSTICO:\n' +
-                        'Análisis profundo de tu operación y terreno\n' +
-                        'Ingeniería certificada con cálculos de resistencia\n' +
-                        'Simulaciones para garantizar durabilidad\n\n' +
-                        '📋 FASE 2 - EJECUCIÓN:\n' +
-                        'Preparación precisa de superficies\n' +
-                        'Aplicación con equipos especializados\n' +
-                        'Inspección en cada etapa\n\n' +
-                        'Resultado: Piso que NO falla bajo condiciones reales.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Nuestra metodología de 3 fases garantiza resistencia:</p>
+                        
+                        <div style="background: #f4f7f8; padding: 8px 12px; border-left: 3px solid #1d5e66; margin-bottom: 10px; border-radius: 4px;">
+                            <p style="margin: 0 0 6px 0; font-weight: 600; color: #0d474d;">📋 FASE 1 - DIAGNÓSTICO</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Análisis profundo de tu operación y terreno</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Ingeniería certificada con cálculos de resistencia</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Simulaciones para garantizar durabilidad</p>
+                        </div>
+                        
+                        <div style="background: #f4f7f8; padding: 8px 12px; border-left: 3px solid #1d5e66; margin-bottom: 10px; border-radius: 4px;">
+                            <p style="margin: 0 0 6px 0; font-weight: 600; color: #0d474d;">📋 FASE 2 - EJECUCIÓN</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Preparación precisa de superficies</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Aplicación con equipos especializados</p>
+                            <p style="margin: 3px 0; font-size: 0.9em;">✓ Inspección en cada etapa</p>
+                        </div>
+                        
+                        <p style="margin-top: 10px; font-weight: 600; color: #0d474d; padding: 8px 12px; background: #e8f1f2; border-radius: 4px;">✅ Resultado: Piso que NO falla bajo condiciones reales</p>
+                    </div>
+                    `;
                     break;
                     
                 case 'calidad':
                     question = '¿Qué medidas de control de calidad aplican?';
-                    answer = 'Durante la instalación aplicamos:\n\n' +
-                        '🔍 Preparación de superficie precisa\n' +
-                        '🔍 Aplicación con equipos de alta precisión\n' +
-                        '🔍 Inspección minuciosa en cada etapa\n' +
-                        '🔍 Control de calidad en tiempo real\n' +
-                        '🔍 Verificación de especificaciones técnicas\n\n' +
-                        'Garantizamos que cada cm² cumpla los estándares requeridos.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Durante la instalación aplicamos:</p>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🔍</span>Preparación de superficie precisa</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🔍</span>Aplicación con equipos de alta precisión</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🔍</span>Inspección minuciosa en cada etapa</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🔍</span>Control de calidad en tiempo real</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🔍</span>Verificación de especificaciones técnicas</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #0d474d; font-weight: 600; padding: 8px 12px; background: #e8f1f2; border-radius: 4px;">Garantizamos que cada cm² cumpla los estándares requeridos</p>
+                    </div>
+                    `;
                     break;
                     
                 case 'soporte':
                     question = '¿Qué ocurre después de la entrega?';
-                    answer = 'Nuestro compromiso continúa en FASE 3:\n\n' +
-                        '🤝 Capacitación al personal\n' +
-                        '🤝 Planes de mantenimiento integral\n' +
-                        '🤝 Garantía extendida\n' +
-                        '🤝 Continuidad operativa asegurada\n\n' +
-                        'Para campos deportivos incluimos mantenimiento integral con cobertura de reparaciones.\n\n' +
-                        'Tu inversión está protegida a largo plazo.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Nuestro compromiso continúa en FASE 3:</p>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none; margin-bottom: 10px;">
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🤝</span>Capacitación al personal</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🤝</span>Planes de mantenimiento integral</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🤝</span>Garantía extendida</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🤝</span>Continuidad operativa asegurada</li>
+                        </ul>
+                        <p style="margin: 10px 0; font-size: 0.9em; color: #666;">Para campos deportivos incluimos mantenimiento integral con cobertura de reparaciones.</p>
+                        <p style="margin-top: 10px; font-weight: 600; color: #0d474d; padding: 8px 12px; background: #e8f1f2; border-radius: 4px;">✅ Tu inversión está protegida a largo plazo</p>
+                    </div>
+                    `;
                     break;
                     
                 case 'experiencia':
                     question = '¿En qué sectores peruanos tienen experiencia?';
-                    answer = 'Hemos ejecutado proyectos en sectores clave de Perú:\n\n' +
-                        '🏭 Manufactura e Industria Pesada\n' +
-                        '📦 Logística y Centros de Distribución\n' +
-                        '🍔 Industria Alimentaria y Bebidas\n' +
-                        '👔 Sector Textil y Confecciones\n' +
-                        '🛒 Bienes de Consumo y Retail\n' +
-                        '⚽ Instituciones Deportivas y Educativas\n\n' +
-                        'Conocimiento real en operaciones de cada sector.';
+                    answer = `
+                    <div style="line-height: 1.6;">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: #1d5e66;">Hemos ejecutado proyectos en sectores clave de Perú:</p>
+                        <ul style="margin: 0; padding-left: 20px; list-style: none;">
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🏭</span>Manufactura e Industria Pesada</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">📦</span>Logística y Centros de Distribución</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🍔</span>Industria Alimentaria y Bebidas</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">👔</span>Sector Textil y Confecciones</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">🛒</span>Bienes de Consumo y Retail</li>
+                            <li style="margin: 6px 0; padding-left: 20px; position: relative;"><span style="position: absolute; left: 0; color: #1d5e66;">⚽</span>Instituciones Deportivas y Educativas</li>
+                        </ul>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #0d474d; font-weight: 600; padding: 8px 12px; background: #e8f1f2; border-radius: 4px;">Conocimiento real en operaciones de cada sector</p>
+                    </div>
+                    `;
                     break;
             }
             
             if (question) {
-                appendMessage('user', question);
+                appendMessage('user', question, false);
                 
                 setTimeout(() => {
-                    appendMessage('bot', answer);
+                    appendMessage('bot', answer, isHTML);
                     
                     setTimeout(() => {
-                        appendMessage('bot', '¿Necesitas más información o una cotización? Haz clic abajo para hablar con un asesor por WhatsApp. 📞');
+                        appendMessage('bot', '¿Necesitas más información o una cotización? Haz clic abajo para hablar con un asesor por WhatsApp. 📞', false);
                     }, 1200);
                     
                 }, 600);
